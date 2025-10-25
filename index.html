@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unix Time API</title>
+</head>
 <body>
-<h2>Unix Time:</h2>
-<pre id="out"></pre>
-
 <script>
-fetch('http://worldtimeapi.org/api/timezone/Africa/Algiers')
-  .then(r => r.json())
-  .then(data => document.getElementById('out').textContent = data.unixtime);
+  async function main() {
+    const response = await fetch("https://worldtimeapi.org/api/timezone/Africa/Algiers");
+    const data = await response.json();
+    const unix = data.unixtime;
+    
+    // Show JSON as plain output
+    const json = JSON.stringify({ unixtime: unix });
+    document.body.innerText = json;
+    
+    // Optional: add correct header if hosted locally
+    console.log(json);
+  }
+  main();
 </script>
 </body>
 </html>
