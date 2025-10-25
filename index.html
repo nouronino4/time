@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Unix Time:</h2>
+<pre id="out"></pre>
+
+<script>
+fetch('http://worldtimeapi.org/api/timezone/Africa/Algiers')
+  .then(r => r.json())
+  .then(data => document.getElementById('out').textContent = data.unixtime);
+</script>
+</body>
+</html>
